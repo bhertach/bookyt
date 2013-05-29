@@ -5,6 +5,14 @@ Bookyt::Application.routes.draw do
   # I18n
   filter 'locale'
 
+  # Tenancy
+  devise_for :admin_users
+
+  namespace :admin do
+    match '/' => redirect('/admin/tenants')
+    resources :tenants
+  end
+
   # Authorization
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
