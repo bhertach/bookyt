@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529185444) do
+ActiveRecord::Schema.define(:version => 20130601151016) do
 
   create_table "account_types", :force => true do |t|
     t.string   "name",       :limit => 100
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(:version => 20130529185444) do
   end
 
   add_index "addresses", ["vcard_id"], :name => "addresses_vcard_id_index"
+
+  create_table "admin_tenants", :force => true do |t|
+    t.string   "subdomain"
+    t.string   "db_name"
+    t.boolean  "active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
