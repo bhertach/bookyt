@@ -221,32 +221,4 @@ class Invoice < ActiveRecord::Base
   # bookyt_stock
   # ============
   include BookytStock::Invoice
-
-  # Sphinx Search
-  # =============
-  define_index do
-    # Delta index
-    set_property :delta => true
-
-    indexes state, :as => :invoice_state
-
-    indexes code
-    indexes title
-    indexes remarks
-    indexes value_date, :sortable => true
-    indexes due_date, :sortable => true
-    indexes text
-
-    indexes customer.vcards.full_name
-    indexes customer.vcards.nickname
-    indexes customer.vcards.family_name
-    indexes customer.vcards.given_name
-    indexes customer.vcards.additional_name
-
-    indexes company.vcards.full_name
-    indexes company.vcards.nickname
-    indexes company.vcards.family_name
-    indexes company.vcards.given_name
-    indexes company.vcards.additional_name
-  end
 end
